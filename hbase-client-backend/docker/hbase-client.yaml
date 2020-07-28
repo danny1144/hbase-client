@@ -1,0 +1,49 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: hbase-client
+  namespace: platform
+  labels:
+    deployment: hbase-client-app
+spec:
+  selector:
+    app: hbase-client-app
+  externalIPs:
+    - 10.192.30.61
+  ports:
+    - name: hbase-client
+      protocol: TCP
+      port: 9090
+      targetPort: 9090
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hbase-client
+  namespace: platform
+  labels:
+    deployment: hbase-client-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hbase-client-app
+  template:
+    metadata:
+      labels:
+        app: hbase-client-app
+    spec:
+      containers:
+        - name: hbase-client-container
+          image: 10.192.30.61:5000/library/hbase-client:v1.0
+          ports:
+            - containerPort: 9090
+          resources:
+            requests:
+              cpu: "50m"
+              memory: "256Mi"
+            limits:
+              cpu: "3000m"
+              memory: "2048Mi"
+          imagePullPolicy: Always
