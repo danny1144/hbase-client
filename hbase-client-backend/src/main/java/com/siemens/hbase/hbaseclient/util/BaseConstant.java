@@ -1,7 +1,6 @@
 package com.siemens.hbase.hbaseclient.util;
 
 /**
- * @author jin.liu@siemens.com
  * @date 2019/11/01
  * @description 基础参数常量
  */

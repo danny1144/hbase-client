@@ -11,7 +11,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @author jin.liu.ext@siemens.com
  * @date 2019/05/26
  * @description HBase操作工具类
  */

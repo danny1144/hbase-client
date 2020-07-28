@@ -10,7 +10,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @author jin.liu@siemens.com
  * @date 2019/11/01
  * @description HBase配置
  */

@@ -32,7 +32,6 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 /**
- * @author jin.liu.ext@siemens.com
  * @date 2019/04/03
  * @description HBase业务处理层
  */

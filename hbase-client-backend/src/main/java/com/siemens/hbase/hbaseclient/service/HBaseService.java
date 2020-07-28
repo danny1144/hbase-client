@@ -12,7 +12,6 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @author jin.liu.ext@siemens.com
  * @date 2019/04/03
  * @description Hbase业务处理层
  */

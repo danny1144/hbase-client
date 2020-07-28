@@ -1,7 +1,6 @@
 package com.siemens.hbase.hbaseclient.model;
 
 /**
- * @author jin.liu.ext@siemens.com
  * @date 2019/06/04
  * @description Hbase过滤条件实体
  */

@@ -2,9 +2,7 @@ package com.siemens.hbase.hbaseclient.util;
 
 /**
  * @description:
- * @author: lianghao
  * @create: 3/4/2020 11:10 AM
- * @email: hao.liang.ext@siemens.com
  **/
 public class CompressorConstant {
     /**压气机折合转速*/
