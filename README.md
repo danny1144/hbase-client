@@ -3,6 +3,7 @@
 - 版本 hbase  1.2.0
   - 依赖zookeeper
 ## docker-hbase
+```
 hbase搭建一个单机版集群
 datanode-1  数据节点，负责存储实际数据
 hmaster-1 hbase主节点
@@ -11,6 +12,7 @@ regionserver-1 主要负责响应用户的请求，向 HDFS 读写数据。Regio
 zookeeper-1   主要用于实现高可靠性（High Availability, HA），包括 HDFS 的 NameNode 和 YARN 的 ResourceManager 的 HA
 
 regionserver-1.vnet hmaster-1.vnet namenode-1.vnet datanode-1.vnet 这些dns需要在本地host进行映射
+```
 ## spring-boot habase
 
 ## 解决HBase中snappy出错
