@@ -52,14 +52,7 @@ Exception in thread "main" java.lang.UnsatisfiedLinkError: org.apache.hadoop.uti
         at org.apache.hadoop.hbase.util.CompressionTest.main(CompressionTest.java:160)
 ```
 
-
-
-
-
-
-
-
-
+```
 HBase Shell相关命令
 hbase	shell命令	描述
 create	创建表	< create ‘表名’, ‘列族名’, ‘列族名2’,‘列族名N’ >
@@ -87,13 +80,11 @@ status	返回hbase集群的状态信息
 version	返回hbase版本信息	
 exit	退出hbase shell	
 shutdown	关闭hbase集群(与exit不同)	
- 
-
+ ```
 
 - 查看表有那些rowkey
 
   count "member",INTERVAL=>1
-
 
 put 'member','mb1','info:id','3'
 put 'member','mb1','info:age','11'
