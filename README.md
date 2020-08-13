@@ -116,6 +116,10 @@ scan "pma_performance"
 scan "segment_db0_kafka"
 scan "value_db0_kafka"
 
+
+count "pma_compressor_86",INTERVAL=>1
+
+
 count "pma_compressor",INTERVAL=>1
 ```
 hbase(main):005:0> get "pma_compressor","d3d9446802a44259755d38e6d163e820_9223370444531575807"

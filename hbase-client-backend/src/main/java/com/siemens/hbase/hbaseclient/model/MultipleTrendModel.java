@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * @author zxp
  * @date 2019/11/29
  * @description 多列趋势模型
  */

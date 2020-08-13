@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
+ * @author zxp
  * @date 2019/11/01
  * @description HBase配置
  */

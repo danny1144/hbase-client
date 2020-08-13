@@ -32,6 +32,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 /**
+ * @author zxp@siemens.com
  * @date 2019/04/03
  * @description HBase业务处理层
  */
@@ -64,8 +65,6 @@ public class HBaseServiceImpl implements HBaseService {
 
             }
             makeCacheTable(tableDescriptor, connection);
-//            Map<String,Object>
-//            SingletonMap.getInstance().putValue(tableDescriptor.getTableName(),);
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
         } finally {

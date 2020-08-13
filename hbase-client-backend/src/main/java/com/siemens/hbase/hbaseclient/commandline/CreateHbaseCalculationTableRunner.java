@@ -1,46 +1,90 @@
 package com.siemens.hbase.hbaseclient.commandline;
 
+import com.siemens.hbase.hbaseclient.cache.SingletonMap;
 import com.siemens.hbase.hbaseclient.service.HBaseService;
-import com.siemens.hbase.hbaseclient.util.HBaseConstant;
-import org.apache.hadoop.hbase.HColumnDescriptor;
-import org.apache.hadoop.hbase.HTableDescriptor;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.hbase.Cell;
+import org.apache.hadoop.hbase.CellUtil;
 import org.apache.hadoop.hbase.TableName;
-import org.apache.hadoop.hbase.io.compress.Compression;
+import org.apache.hadoop.hbase.client.*;
 import org.apache.hadoop.hbase.util.Bytes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.data.hadoop.hbase.HbaseTemplate;
 import org.springframework.stereotype.Component;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 /**
- * @author jin.liu@siemens.com
+ * @author zxp
  * @date 2019/11/14
  * @description 在Hbase中创建性能监控计算数据表
  */
 @Component
+@Slf4j
 public class CreateHbaseCalculationTableRunner implements CommandLineRunner {
 
     @Autowired
     private HBaseService hBaseService;
+    @Autowired
+    private HbaseTemplate hbaseTemplate;
 
     /**
      * 服务启动后，首先判断hbase计算数据表是否存在，如果不存在，则创建指定表
+     *
      * @return void
      */
     @Override
-    public void run(String... strings) throws Exception{
-        //性能计算表
-        HTableDescriptor calculationTableDesc = new HTableDescriptor(TableName.valueOf(HBaseConstant.PERFORMANCE_TABLE_NAME));
-        //偏差分析表
-        HTableDescriptor deviationTableDesc = new HTableDescriptor(TableName.valueOf(HBaseConstant.DEVIATION_TABLE_NAME));
-        //压气机水洗表
-        HTableDescriptor compressorTableDesc = new HTableDescriptor(TableName.valueOf(HBaseConstant.COMPRESSOR_TABLE_NAME));
-        HColumnDescriptor hColumnDescriptor = new HColumnDescriptor(Bytes.toBytes(HBaseConstant.FAMILY_COLUMN_NAME));
-        hColumnDescriptor.setCompactionCompressionType(Compression.Algorithm.SNAPPY);
-        calculationTableDesc.addFamily(hColumnDescriptor);
-        deviationTableDesc.addFamily(hColumnDescriptor);
-        compressorTableDesc.addFamily(hColumnDescriptor);
-        hBaseService.createTable(calculationTableDesc);
-        hBaseService.createTable(deviationTableDesc);
-        hBaseService.createTable(compressorTableDesc);
+    public void run(String... strings) throws IOException {
+        List<String> allTableNames = hBaseService.getAllTableNames();
+        Configuration configuration = hbaseTemplate.getConfiguration();
+        Connection connection = null;
+        try {
+            connection = ConnectionFactory.createConnection(configuration);
+            for (String tableName : allTableNames) {
+                log.info("表名:{}", tableName);
+                makeCacheTable(tableName, connection);
+            }
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+        } finally {
+            if (null != connection) {
+                try {
+                    connection.close();
+                } catch (IOException e) {
+                    log.error("", e);
+                }
+            }
+        }
+    }
+    private boolean makeCacheTable(String tableName, Connection connection) throws IOException {
+
+        Table table = connection.getTable(TableName.valueOf(tableName));
+        ResultScanner scanner = table.getScanner(new Scan());
+        Result result = scanner.next();
+        if (result == null) {
+            return true;
+        }
+        List<Map<String, String>> tableMetes = new ArrayList<>(10);
+        //result.advance()是否有下一个cell
+        //result.current()获取当前cell
+        while (result.advance()) {
+            Map<String, String> tableMete = new HashMap<>(16);
+            Cell currentCell = result.current();
+            String row = Bytes.toString(CellUtil.cloneRow(currentCell));
+            String family = Bytes.toString(CellUtil.cloneFamily(currentCell));
+            String qualifier = Bytes.toString(CellUtil.cloneQualifier(currentCell));
+            Bytes.toString(currentCell.getValueArray());
+            Double value = Bytes.toDouble(CellUtil.cloneValue(currentCell));
+            tableMete.put(family, qualifier);
+            tableMetes.add(tableMete);
+        }
+        SingletonMap.getInstance().putValue(tableName, tableMetes);
+        return false;
     }
 }

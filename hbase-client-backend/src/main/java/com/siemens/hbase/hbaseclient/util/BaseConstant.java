@@ -1,12 +1,14 @@
 package com.siemens.hbase.hbaseclient.util;
 
 /**
+ * @author zxp
  * @date 2019/11/01
  * @description 基础参数常量
  */
 public final class BaseConstant {
 
-    private BaseConstant() {}
+    private BaseConstant() {
+    }
 
     /**
      * 批量处理容量阈值
@@ -18,16 +20,11 @@ public final class BaseConstant {
      */
     public static final Long INITIAL_ZERO = 0L;
 
-    public static final Long HAS_PROJECT_INITIAL = -123L;
 
     /**
      * 初始0值
      */
     public static final Integer INITIAL_ZERO_INT = 0;
-    /**
-     * 初始0值
-     */
-    public static final Double INITIAL_ZERO_DOUBLE = 0.0;
 
     /**
      * 启用
@@ -67,10 +64,6 @@ public final class BaseConstant {
      * 值10
      */
     public static final Integer TEN = 10;
-    /**
-     * 值15
-     */
-    public static final Integer FIFTEEN = 15;
     /**
      * 值20
      */
@@ -148,12 +141,12 @@ public final class BaseConstant {
     /**
      * null字符串值
      */
-    public static final String EMPTY_NULL_STRING= "null";
+    public static final String EMPTY_NULL_STRING = "null";
 
     /**
      * 请求头信息
      */
-    public static final String  APPLICATION_JSON= "application/json";
+    public static final String APPLICATION_JSON = "application/json";
 
     /**
      * utf-8字符集
@@ -208,20 +201,20 @@ public final class BaseConstant {
 
     public static final String N_A = "N.A.";
 
-    public static final String HORIZONTAL_BAR= "- -";
+    public static final String HORIZONTAL_BAR = "- -";
 
     /**
      * 1毫秒数
      */
-    public static final Integer ONE_SECOND_MILLISECOND= 1000;
+    public static final Integer ONE_SECOND_MILLISECOND = 1000;
     /**
      * 1分钟毫秒数
      */
-    public static final Long ONE_MINUTE_MILLISECOND= 60000L;
+    public static final Long ONE_MINUTE_MILLISECOND = 60000L;
     /**
      * 10分钟毫秒数
      */
-    public static final Long TEN_MINUTE_MILLISECOND= 600000L;
+    public static final Long TEN_MINUTE_MILLISECOND = 600000L;
     /**
      * 1小时毫秒数
      */
@@ -233,11 +226,11 @@ public final class BaseConstant {
     /**
      * 60秒
      */
-    public static final Integer SIXTY_SECONDS= 60;
+    public static final Integer SIXTY_SECONDS = 60;
     /**
      * 100
      */
-    public static final Integer ONE_HUNDRED= 100;
+    public static final Integer ONE_HUNDRED = 100;
 
     /**
      * 模式主键前缀
@@ -261,8 +254,6 @@ public final class BaseConstant {
 
 
     public static final String SEARCH_BEST_OPERATION = "SEARCH_BEST_OPERATION";
-
-
 
 
 }

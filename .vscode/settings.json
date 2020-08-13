@@ -1,3 +1,40 @@
 {
-    "eggHelper.serverPort": 35684
+    "eggHelper.serverPort": 35684,
+    "java.home": "C:\\Program Files\\Java\\jdk1.8.0_191",
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "java.configuration.checkProjectSettingsExclusions": false,
+    "editor.fontSize": 18,
+    "java.errors.incompleteClasspath.severity": "ignore",
+    "files.autoGuessEncoding": true,
+    "workbench.startupEditor": "newUntitledFile",
+    "java.configuration.maven.userSettings": "D:\\java\\maven3\\apache-maven-3.5.4\\conf\\settings.xml",
+    "maven.executable.path": "D:\\java\\maven3\\apache-maven-3.5.4\\bin\\mvn.cmd",
+    "maven.terminal.useJavaHome": true,
+    "maven.terminal.customEnv": [
+        {
+            "environmentVariable": "JAVA_HOME",
+            "value": "C:\\Program Files\\Java\\jdk1.8.0_191"
+        }
+    ],
+    // tab长度
+    "editor.tabSize": 2,
+    // 启用后，将在保存文件时剪裁尾随空格。
+    "files.trimTrailingWhitespace": true,
+    // 配置 glob 模式以排除文件和文件夹。
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.DS_Store": true,
+        "**/.idea": true
+    },
+    "java.jdt.ls.vmargs": "-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx1G -Xms100m -javaagent:\"c:\\Users\\Z00403VJ\\.vscode\\extensions\\gabrielbb.vscode-lombok-1.0.1\\server\\lombok.jar\"",
+    "java.configuration.runtimes": [
+    {
+        "name": "JavaSE-1.8",
+        "path": "C:\\Program Files\\Java\\jdk1.8.0_191",
+        "default": true,
+        "sources": "C:\\Program Files\\Java\\jdk1.8.0_191\\src"
+    }
+    ]
 }
