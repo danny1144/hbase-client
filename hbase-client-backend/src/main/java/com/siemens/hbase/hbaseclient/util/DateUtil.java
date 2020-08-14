@@ -8,7 +8,7 @@ import java.util.List;
 import static com.siemens.hbase.hbaseclient.util.BaseConstant.*;
 
 /**
- * @author zxp@siemens.com
+ * @author zxp.ext@siemens.com
  * @date 2019/04/09
  * @Description 日期时间工具类
  */

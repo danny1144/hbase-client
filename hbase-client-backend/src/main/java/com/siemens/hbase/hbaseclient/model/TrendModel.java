@@ -3,7 +3,7 @@ package com.siemens.hbase.hbaseclient.model;
 import java.util.List;
 
 /**
- * @author zxp@siemens.com
+ * @author zxp.ext@siemens.com
  * @date 2019/07/03
  * @description 趋势模型
  */

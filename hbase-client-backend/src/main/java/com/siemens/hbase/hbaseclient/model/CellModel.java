@@ -3,7 +3,7 @@ package com.siemens.hbase.hbaseclient.model;
 import java.io.Serializable;
 
 /**
- * @author zxp@siemens.com
+ * @author zxp.ext@siemens.com
  * @date 2019/04/04
  * @description HBase单元格实体
  */

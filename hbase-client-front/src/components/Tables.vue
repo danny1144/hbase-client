@@ -24,37 +24,7 @@
   </a-table>
 </template>
 <script>
-/* const columns = [
-  {
-    title: 'Contry',
-    dataIndex: 'contry',
-    key: 'name',
-    // scopedSlots: { customRender: 'name' },
-  },
-  {
-    title: 'compressorConvertEff',
-    dataIndex: 'compressorConvertEff',
-    key: 'compressorConvertEff',
-    width: 80,
-  },
-  {
-    title: 'City',
-    dataIndex: 'city',
-    key: 'address 1',
-    ellipsis: true,
-  },
-  {
-    title: 'id',
-    dataIndex: 'id',
-    key: 'address 2',
-    ellipsis: true,
-  },
-  {
-    title: 'operation',
-    dataIndex: 'operation',
-    scopedSlots: { customRender: 'operation' },
-  },
-]; */
+ 
 import { mapGetters, mapActions, mapMutations } from 'vuex';
 export default {
   data() {

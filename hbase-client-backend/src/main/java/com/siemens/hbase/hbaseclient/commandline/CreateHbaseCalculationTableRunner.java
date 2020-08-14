@@ -21,7 +21,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @author zxp
+ * @author zxp@siemens.com
  * @date 2019/11/14
  * @description 在Hbase中创建性能监控计算数据表
  */

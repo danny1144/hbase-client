@@ -1,7 +1,7 @@
 package com.siemens.hbase.hbaseclient.util;
 
 /**
- * @author zxp
+ * @author zxp@siemens.com
  * @date 2019/11/01
  * @description 基础参数常量
  */

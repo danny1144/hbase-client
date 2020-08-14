@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @author zxp@siemens.com
+ * @author zxp.ext@siemens.com
  * @date 2019/05/26
  * @description HBase操作工具类
  */
@@ -106,7 +106,15 @@ public final class HBaseUtil {
         return null;
     }
 
-
+    /**
+     * 通过时间戳反转得到rowkey字符串
+     * @param timestamp 时间戳
+     * @return 处理后的rowkey
+     */
+    public static String getRowKey(long timestamp) {
+        long reverseTime = Long.MAX_VALUE - timestamp;
+        return String.valueOf(reverseTime);
+    }
     /**
      * 获得时间间隔对应的天数集合
      *

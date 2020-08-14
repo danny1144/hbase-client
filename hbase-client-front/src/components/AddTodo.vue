@@ -2,9 +2,7 @@
   <div class="searchBox">
     <h2>查询HBASE</h2>
     <form @submit="submit">
-      <input type="text" v-model="query.rowKeyPrefix" placeholder="请输入行键前缀值" />
-      <input type="text" v-model="query.columnFamily" placeholder="请输入列簇" />
-      <input type="text" v-model="query.column" placeholder="请输入列名" />
+      <date-picker class="picker"></date-picker>
       <input type="submit"   value="搜索" />
     </form>
   </div>
@@ -12,8 +10,12 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
+import DatePicker from './DatePicker'
 export default {
   name: 'AddTodo',
+  components: {
+    DatePicker
+  },
   computed: {
     ...mapGetters(['getTableNames', 'query', 'selectFlag', 'getTableList']),
   },
@@ -25,6 +27,7 @@ export default {
          this.$message.warning('请选择table!');
          return
       }
+      console.log(this.$store.state.hbase.query)
       this.getAllTableList(this.query);
     },
   },
@@ -45,8 +48,11 @@ input[type='submit'] {
   background: #41b883;
   border: 1px solid #41b883;
   color: white;
-  flex: 2;
+  flex: 1;
   cursor: pointer;
+}
+.picker{
+   flex: 3;
 }
 .searchBox{
   margin-bottom: 15px;

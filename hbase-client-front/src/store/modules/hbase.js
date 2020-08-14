@@ -11,6 +11,8 @@ const state = {
     currentPage: 1,
     pageSize: 10,
     rowKeyPrefix: '',
+    startTime: '',
+    endTime: '',
     startRowKey: '',
     endRowKey: '',
     columnFamily: '',
@@ -37,6 +39,11 @@ const mutations = {
   },
   setTableList(state, tableList) {
     state.tableList = tableList;
+  },
+  setDate(state, dateTime) {
+    let { startTime, endTime } = dateTime;
+    state.query.startTime = startTime;
+    state.query.endTime = endTime;
   },
 };
 const request = axios.create({

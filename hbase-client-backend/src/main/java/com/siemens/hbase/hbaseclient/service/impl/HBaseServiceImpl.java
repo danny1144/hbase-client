@@ -32,7 +32,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 /**
- * @author zxp@siemens.com
+ * @author zxp.ext@siemens.com
  * @date 2019/04/03
  * @description HBase业务处理层
  */
@@ -1227,6 +1227,14 @@ public class HBaseServiceImpl implements HBaseService {
             // 缓存1000条数据
             scan.setCaching(1000);
             scan.setCacheBlocks(false);
+            if (query.getStartTime() != null && query.getEndTime() != null && query.getStartTime().compareTo(query.getEndTime()) <= 0) {
+                String startRowKey = HBaseUtil.getRowKey(query.getStartTime());
+                //结束日期加一是为了包含终止时间
+                String stopRowKey = HBaseUtil.getRowKey(query.getEndTime() + 1);
+                scan.withStartRow(Bytes.toBytes(startRowKey));
+                scan.withStopRow(Bytes.toBytes(stopRowKey));
+            }
+            scan.setReversed(Boolean.TRUE);
             scanner = table.getScanner(scan);
             int i = 0;
             List<byte[]> rowList = new LinkedList<byte[]>();
